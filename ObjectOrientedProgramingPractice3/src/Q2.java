@@ -15,18 +15,18 @@ import java.util.Vector;
  */
 public class Q2 extends JFrame {
 
-	public DefaultTableModel tableModel;
-	public JTable table;
-	public JComboBox<String> cmbDepartment;
-	public JComboBox<String> cmbGender;
-	public JTextField txtGPA;
-	public JTextField txtHeight;
-	public JTextField txtWeight;
+	protected DefaultTableModel tableModel;
+	protected JTable table;
+	protected JComboBox<String> cmbDepartment;
+	protected JComboBox<String> cmbGender;
+	protected JTextField txtGPA;
+	protected JTextField txtHeight;
+	protected JTextField txtWeight;
 
-	public Vector<CollegeStudent> studentList = new Vector<CollegeStudent>();
+	protected Vector<CollegeStudent> studentList = new Vector<CollegeStudent>();
 
-	public static final String[] DEPARTMENTS = { "CS", "Philosophy", "History", "Law" };
-	public static final String[] GENDERS = { "Male", "Female" };
+	protected static final String[] DEPARTMENTS = { "CS", "Philosophy", "History", "Law" };
+	protected static final String[] GENDERS = { "Male", "Female" };
 
 	public Q2() {
 		setTitle("Manage Stutdent List");
@@ -68,7 +68,7 @@ public class Q2 extends JFrame {
 		inputPanel.add(txtHeight);
 		inputPanel.add(lblWeight);
 		inputPanel.add(txtWeight);
-		inputPanel.add(btnAdd, BorderLayout.SOUTH);
+		inputPanel.add(btnAdd);
 
 		btnAdd.addActionListener(new ActionListener() {
 			@Override
@@ -77,13 +77,9 @@ public class Q2 extends JFrame {
 			}
 		});
 
-		for (int i = 0; i < 100; i++) {
-			addStudent(false);
-		}
-
 		Container mainContainer = getContentPane();
-		mainContainer.add(scrollPane, BorderLayout.CENTER);
-		mainContainer.add(inputPanel, BorderLayout.SOUTH);
+		mainContainer.add(scrollPane, BorderLayout.NORTH);
+		mainContainer.add(inputPanel, BorderLayout.CENTER);
 
 		setVisible(true);
 	}
@@ -100,8 +96,8 @@ public class Q2 extends JFrame {
 				CollegeStudent student = new CollegeStudent(department, gender, height, weight, GPA);
 				studentList.add(student);
 
-				Object[] rowData = { student.getStudentId(), student.getDepartment(), student.getGender(), student.getGPA(),
-						student.getHeight(), student.getWeight() };
+				Object[] rowData = { student.getStudentId(), student.getDepartment(), student.getGender(),
+						student.getGPA(), student.getHeight(), student.getWeight() };
 				tableModel.addRow(rowData);
 
 				// Clear the input fields
@@ -124,7 +120,10 @@ public class Q2 extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new Q2();
+		Q2 window = new Q2();
+		for (int i = 0; i < 100; i++) {
+			window.addStudent(false);
+		}
 
 	}
 

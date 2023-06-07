@@ -60,7 +60,7 @@ public class Q3 extends Q2 {
 			JOptionPane.showMessageDialog(this, "Saved successfully!");
 
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(this, "Eror! Try again!");
+			JOptionPane.showMessageDialog(this, "Error! Try again!");
 		}
 
 	}
@@ -78,8 +78,8 @@ public class Q3 extends Q2 {
 			int len = objectIn.readInt();
 			for (int i = 0; i < len; i++) {
 				CollegeStudent student = (CollegeStudent) objectIn.readObject();
-				Object[] rowData = { student.getStudentId(), student.getDepartment(), student.getGender(), student.getGPA(),
-						student.getHeight(), student.getWeight() };
+				Object[] rowData = { student.getStudentId(), student.getDepartment(), student.getGender(),
+						student.getGPA(), student.getHeight(), student.getWeight() };
 				studentList.add(student);
 				tableModel.addRow(rowData);
 			}
@@ -98,7 +98,7 @@ public class Q3 extends Q2 {
 	}
 
 	public static void main(String[] args) {
-		new Q3();
+		Q3 window = new Q3();
 
 	}
 

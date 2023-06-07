@@ -2,10 +2,10 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * Basic Student Class
+ * Student: Basic Student Class
  * 
  * @author JaeHyun Yoon
- * @since 06-06-2023
+ * @since 06-07-2023
  */
 class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -148,5 +148,9 @@ class Student implements Serializable {
 
 	public String[] getDepartmentList() {
 		return DEPARTMENT_LIST;
+	}
+
+	public static void setGlobalStudentId(int id) {
+		globalStudentId = id;
 	}
 }

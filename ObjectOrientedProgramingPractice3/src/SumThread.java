@@ -1,6 +1,10 @@
 import java.util.Vector;
-
-public class SumThread extends Thread {
+/**
+ * SumThread: Summing for multiple thread
+ * @author JaeHyunYoon
+ * @since 06-07-2023
+ */
+class SumThread extends Thread {
 
 	private static double sum = 0;
 	private static Vector<CollegeStudent> list = null;

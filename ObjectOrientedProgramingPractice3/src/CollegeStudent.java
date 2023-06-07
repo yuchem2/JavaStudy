@@ -4,11 +4,11 @@ import java.util.Random;
  * CollegeStudent: add data member GPA from Student class.
  * 
  * @author JaeHyun Yoon
- * @since 06-06-2023
+ * @since 06-07-2023
  * @see Student
  */
 class CollegeStudent extends Student {
-	
+
 	private double GPA = 0.0;
 
 	// Constructor
@@ -28,6 +28,7 @@ class CollegeStudent extends Student {
 		super(department, gender, height, weight);
 		this.GPA = GPA;
 	}
+
 	public CollegeStudent(String department, int studentId, String gender, double height, double weight, double GPA) {
 		super(department, studentId, gender, height, weight);
 		this.GPA = GPA;

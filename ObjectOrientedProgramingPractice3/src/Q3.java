@@ -70,12 +70,13 @@ public class Q3 extends Q2 {
 		try {
 			FileInputStream fileIn = new FileInputStream(fileName);
 			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-			for (int i = 0; i < studentList.size(); i++) {
+			int len = tableModel.getRowCount();
+			for (int i = 0; i < len; i++) {
 				tableModel.removeRow(0);
 			}
 			studentList.clear();
 
-			int len = objectIn.readInt();
+			len = objectIn.readInt();
 			for (int i = 0; i < len; i++) {
 				CollegeStudent student = (CollegeStudent) objectIn.readObject();
 				Object[] rowData = { student.getStudentId(), student.getDepartment(), student.getGender(),

@@ -62,12 +62,13 @@ class ServiceThread extends Thread {
 		try {
 			FileInputStream fileIn = new FileInputStream(fileName);
 			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-			for (int i = 0; i < tableModel.getRowCount(); i++) {
+			int len = tableModel.getRowCount();
+			for (int i = 0; i < len; i++) {
 				tableModel.removeRow(0);
 			}
 			studentList.clear();
 
-			int len = objectIn.readInt();
+			len = objectIn.readInt();
 			CollegeStudent.setGlobalStudentId(len + 1);
 			out.write(len);
 			for (int i = 0; i < len; i++) {
@@ -149,11 +150,13 @@ class ServiceThread extends Thread {
 
 	public void remove() {
 		log.append("Connection terminated...\n");
-		studentList.clear();
-		CollegeStudent.setGlobalStudentId(1);
-		for (int i = 0; i < tableModel.getRowCount(); i++) {
+		int len = tableModel.getRowCount();
+		for (int i = 0; i < len; i++) {
 			tableModel.removeRow(0);
 		}
+		studentList.clear();
+		CollegeStudent.setGlobalStudentId(1);
+
 		try {
 			in.close();
 			out.close();
@@ -178,14 +181,14 @@ class ServiceThread extends Thread {
 				} else if (command.equals("Calculate")) {
 					calculate();
 				} else if (command.equals("Terminate")) {
-					break;
+					remove();
+					return;
 				}
 			} catch (IOException | ClassNotFoundException e) {
 				remove();
 				return;
 			}
 		}
-		remove();
 
 	}
 
